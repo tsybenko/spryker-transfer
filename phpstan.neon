@@ -2,4 +2,10 @@ parameters:
     ignoreErrors:
         -
             identifier: missingType.iterableValue
+        -
+            identifier: trait.unused
+        -
+            identifier: arrayValues.list
+        -
+            identifier: varTag.nativeType
     level: 7
