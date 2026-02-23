@@ -34,7 +34,7 @@ class GeneratedTransferDirectoryTest extends Unit
         $fileSystemMock
             ->expects($this->once())
             ->method('exists')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
         $fileSystemMock
             ->expects($this->never())
             ->method('remove');
