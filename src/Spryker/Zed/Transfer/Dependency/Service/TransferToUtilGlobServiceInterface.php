@@ -9,11 +9,5 @@ namespace Spryker\Zed\Transfer\Dependency\Service;
 
 interface TransferToUtilGlobServiceInterface
 {
-    /**
-     * @param string $pattern
-     * @param int $flags
-     *
-     * @return array
-     */
     public function glob(string $pattern, int $flags = 0): array;
 }

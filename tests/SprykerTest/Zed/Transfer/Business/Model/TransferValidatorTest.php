@@ -34,9 +34,6 @@ class TransferValidatorTest extends Unit
      */
     protected $output;
 
-    /**
-     * @return void
-     */
     public function testValidate(): void
     {
         $sourceDirectories = [
@@ -57,9 +54,6 @@ class TransferValidatorTest extends Unit
         $this->assertTrue($result);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateWithBC(): void
     {
         $sourceDirectories = [
@@ -80,9 +74,6 @@ class TransferValidatorTest extends Unit
         $this->assertTrue($result);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateWithoutBC(): void
     {
         $sourceDirectories = [
@@ -105,11 +96,6 @@ class TransferValidatorTest extends Unit
         $this->assertFalse($result);
     }
 
-    /**
-     * @param array $sourceDirectories
-     *
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\TransferDefinitionFinder
-     */
     protected function getDefinitionFinder(array $sourceDirectories): TransferDefinitionFinder
     {
         $this->output = new ConsoleOutput();

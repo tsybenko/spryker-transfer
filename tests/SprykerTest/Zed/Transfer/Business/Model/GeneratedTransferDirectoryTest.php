@@ -25,9 +25,6 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class GeneratedTransferDirectoryTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testClearAbortsOnNonExistingDirectory(): void
     {
         $fileSystemMock = $this->getFileSystemMock();

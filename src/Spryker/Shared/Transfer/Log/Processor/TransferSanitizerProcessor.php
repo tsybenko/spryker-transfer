@@ -37,9 +37,6 @@ class TransferSanitizerProcessor
      */
     protected $sanitizer;
 
-    /**
-     * @param \Spryker\Shared\Log\Sanitizer\SanitizerInterface $sanitizer
-     */
     public function __construct(SanitizerInterface $sanitizer)
     {
         $this->sanitizer = $sanitizer;
@@ -66,11 +63,6 @@ class TransferSanitizerProcessor
         return $record;
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $transfer
-     *
-     * @return array
-     */
     protected function transferToArray(TransferInterface $transfer): array
     {
         $transferArray = $transfer->toArray();
@@ -86,11 +78,6 @@ class TransferSanitizerProcessor
         return $transferArray;
     }
 
-    /**
-     * @param array $context
-     *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface|null
-     */
     protected function findTransfer(array $context): ?TransferInterface
     {
         if (!empty($context[static::CONTEXT_KEY])) {

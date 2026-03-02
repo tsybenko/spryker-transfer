@@ -26,25 +26,16 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class ClassGeneratorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         $this->removeTargetDirectory();
     }
 
-    /**
-     * @return void
-     */
     public function tearDown(): void
     {
         $this->removeTargetDirectory();
     }
 
-    /**
-     * @return void
-     */
     private function removeTargetDirectory(): void
     {
         if (is_dir($this->getFixtureDirectory())) {
@@ -53,17 +44,11 @@ class ClassGeneratorTest extends Unit
         }
     }
 
-    /**
-     * @return string
-     */
     private function getFixtureDirectory(): string
     {
         return __DIR__ . '/FixturesTest/';
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateShouldCreateTargetDirectoryIfNotExist(): void
     {
         $transferGenerator = new DataBuilderClassGenerator($this->getFixtureDirectory());

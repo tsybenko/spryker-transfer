@@ -60,11 +60,6 @@ class TransferDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addPropelFacade(Container $container): Container
     {
         $container->set(static::FACADE_PROPEL, function (Container $container) {
@@ -76,11 +71,6 @@ class TransferDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilGlobService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_GLOB, function (Container $container) {

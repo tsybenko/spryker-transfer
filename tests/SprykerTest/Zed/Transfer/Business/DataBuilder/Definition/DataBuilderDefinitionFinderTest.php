@@ -28,9 +28,6 @@ class DataBuilderDefinitionFinderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetXmlTransferDefinitionFilesFindsDataBuilderDefinitions(): void
     {
         $transferDefinitions = $this->tester->createEntityTransferDefinitionFinder()->getXmlTransferDefinitionFiles();

@@ -22,9 +22,6 @@ class TransferToPropelFacadeBridge implements TransferToPropelFacadeInterface
         $this->propelFacade = $propelFacade;
     }
 
-    /**
-     * @return string
-     */
     public function getSchemaDirectory(): string
     {
         return $this->propelFacade->getSchemaDirectory();

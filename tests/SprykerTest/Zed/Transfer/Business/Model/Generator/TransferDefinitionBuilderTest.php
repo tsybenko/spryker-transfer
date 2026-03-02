@@ -33,9 +33,6 @@ use Symfony\Component\Console\Logger\ConsoleLogger;
  */
 class TransferDefinitionBuilderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testBuildTransferDefinitionShouldReturnArrayWithClassDefinitions(): void
     {
         $directories = [
@@ -51,9 +48,6 @@ class TransferDefinitionBuilderTest extends Unit
         $this->assertInstanceOf(ClassDefinition::class, $transferDefinition);
     }
 
-    /**
-     * @return void
-     */
     public function testBuildTransferDefinitionWithStrictnessError(): void
     {
         $sourceDirectories = [

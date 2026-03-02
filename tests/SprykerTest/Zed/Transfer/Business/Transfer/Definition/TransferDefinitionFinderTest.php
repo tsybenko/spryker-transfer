@@ -28,9 +28,6 @@ class TransferDefinitionFinderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetXmlTransferDefinitionFilesFindsTransferDefinitions(): void
     {
         $transferDefinitions = $this->tester->createTransferDefinitionFinder()->getXmlTransferDefinitionFiles();

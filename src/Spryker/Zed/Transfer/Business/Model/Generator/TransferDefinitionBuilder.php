@@ -26,11 +26,6 @@ class TransferDefinitionBuilder extends AbstractDefinitionBuilder
      */
     protected $classDefinition;
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\LoaderInterface $loader
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\MergerInterface $merger
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\ClassDefinitionInterface $classDefinition
-     */
     public function __construct(LoaderInterface $loader, MergerInterface $merger, ClassDefinitionInterface $classDefinition)
     {
         $this->loader = $loader;

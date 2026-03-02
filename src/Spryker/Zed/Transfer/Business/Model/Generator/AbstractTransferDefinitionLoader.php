@@ -26,11 +26,6 @@ abstract class AbstractTransferDefinitionLoader implements LoaderInterface
      */
     protected $transferDefinitions = [];
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\FinderInterface $finder
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\DefinitionNormalizerInterface $definitionNormalizer
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     */
     public function __construct(
         protected FinderInterface $finder,
         protected DefinitionNormalizerInterface $definitionNormalizer,
@@ -38,9 +33,6 @@ abstract class AbstractTransferDefinitionLoader implements LoaderInterface
     ) {
     }
 
-    /**
-     * @return array
-     */
     public function getDefinitions(): array
     {
         $this->loadDefinitions();
@@ -51,11 +43,6 @@ abstract class AbstractTransferDefinitionLoader implements LoaderInterface
         return $this->transferDefinitions;
     }
 
-    /**
-     * @param string $filePath
-     *
-     * @return string
-     */
     protected function getContainingBundleFromPathName(string $filePath): string
     {
         $pathParts = explode(DIRECTORY_SEPARATOR, $filePath);
@@ -66,8 +53,5 @@ abstract class AbstractTransferDefinitionLoader implements LoaderInterface
         return $containingBundle;
     }
 
-    /**
-     * @return void
-     */
     abstract protected function loadDefinitions(): void;
 }

@@ -108,9 +108,6 @@ class ClassDefinition implements ClassDefinitionInterface
      */
     protected $transferConfig;
 
-    /**
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     */
     public function __construct(TransferConfig $transferConfig)
     {
         $this->transferConfig = $transferConfig;
@@ -190,9 +187,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
@@ -206,11 +200,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $this->useStatements;
     }
 
-    /**
-     * @param array $properties
-     *
-     * @return void
-     */
     protected function addConstants(array $properties): void
     {
         foreach ($properties as $property) {
@@ -235,11 +224,6 @@ class ClassDefinition implements ClassDefinitionInterface
         $this->constants[$property['name']] = $propertyInfo;
     }
 
-    /**
-     * @param array $properties
-     *
-     * @return void
-     */
     protected function addProperties(array $properties): void
     {
         foreach ($properties as $property) {
@@ -267,11 +251,6 @@ class ClassDefinition implements ClassDefinitionInterface
         $this->properties[$property['name']] = $propertyInfo;
     }
 
-    /**
-     * @param array $properties
-     *
-     * @return void
-     */
     protected function setPropertyNameMap(array $properties): void
     {
         /** @var array<string, string> $property */
@@ -401,11 +380,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return (bool)preg_match('/^[A-Z].*/', $type);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isAbstractAttributesTransfer(string $type): bool
     {
         return $type === 'AbstractAttributesTransfer';
@@ -551,17 +525,11 @@ class ClassDefinition implements ClassDefinitionInterface
         return str_replace('[]', '', $property['type']);
     }
 
-    /**
-     * @return array
-     */
     public function getConstants(): array
     {
         return $this->constants;
     }
 
-    /**
-     * @return array
-     */
     public function getProperties(): array
     {
         return $this->properties;
@@ -575,11 +543,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $this->propertyNameMap;
     }
 
-    /**
-     * @param array $properties
-     *
-     * @return void
-     */
     protected function addMethods(array $properties): void
     {
         foreach ($properties as $property) {
@@ -620,33 +583,21 @@ class ClassDefinition implements ClassDefinitionInterface
         }
     }
 
-    /**
-     * @return array
-     */
     public function getConstructorDefinition(): array
     {
         return $this->constructorDefinition;
     }
 
-    /**
-     * @return array
-     */
     public function getMethods(): array
     {
         return $this->methods;
     }
 
-    /**
-     * @return array
-     */
     public function getNormalizedProperties(): array
     {
         return $this->normalizedProperties;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDeprecationDescription(): ?string
     {
         return $this->deprecationDescription;
@@ -1236,9 +1187,6 @@ class ClassDefinition implements ClassDefinitionInterface
         }
     }
 
-    /**
-     * @return string|null
-     */
     public function getEntityNamespace(): ?string
     {
         return $this->entityNamespace;
@@ -1271,29 +1219,16 @@ class ClassDefinition implements ClassDefinitionInterface
         return static::SUPPORTED_VALUE_OBJECTS[$property['type']][static::TYPE_FULLY_QUALIFIED];
     }
 
-    /**
-     * @return bool
-     */
     public function isDebugMode(): bool
     {
         return $this->transferConfig->isDebugEnabled();
     }
 
-    /**
-     * @param string $fullyQualifiedClassName
-     *
-     * @return string
-     */
     protected function getShortClassName(string $fullyQualifiedClassName): string
     {
         return substr((string)strrchr($fullyQualifiedClassName, '\\'), 1);
     }
 
-    /**
-     * @param string $fullyQualifiedClassName
-     *
-     * @return void
-     */
     protected function addUseStatement(string $fullyQualifiedClassName): void
     {
         if (isset($this->useStatements[$fullyQualifiedClassName])) {
@@ -1425,12 +1360,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $this->buildType($type, $typeShim);
     }
 
-    /**
-     * @param string $type
-     * @param string|null $typeShim
-     *
-     * @return string
-     */
     protected function buildType(string $type, ?string $typeShim = null): string
     {
         if ($typeShim === null) {
@@ -1440,12 +1369,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return sprintf('%s|%s', $typeShim, $type);
     }
 
-    /**
-     * @param string $type
-     * @param string $typeShim
-     *
-     * @return string
-     */
     protected function buildAddTypeShimNotice(string $type, string $typeShim): string
     {
         $type = str_replace('[]', '', $type);
@@ -1454,12 +1377,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $this->buildTypeShimNotice($type, $typeShim);
     }
 
-    /**
-     * @param string $type
-     * @param string|null $typeShim
-     *
-     * @return string
-     */
     protected function buildTypeShimNotice(string $type, ?string $typeShim): string
     {
         return sprintf(static::SHIM_NOTICE_TEMPLATE, $typeShim, $type);
@@ -1485,9 +1402,6 @@ class ClassDefinition implements ClassDefinitionInterface
         return $method;
     }
 
-    /**
-     * @return void
-     */
     protected function addExtraUseStatements(): void
     {
         if ($this->isDebugMode() && !$this->getEntityNamespace()) {
@@ -1737,11 +1651,6 @@ class ClassDefinition implements ClassDefinitionInterface
         }
     }
 
-    /**
-     * @param array $property
-     *
-     * @return string
-     */
     protected function buildCollectionDocTypeHint(array $property): string
     {
         return sprintf('\ArrayObject<\Generated\Shared\Transfer\%s>', rtrim($property['type'], '[]'));

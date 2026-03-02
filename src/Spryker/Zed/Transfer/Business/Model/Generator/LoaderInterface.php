@@ -9,8 +9,5 @@ namespace Spryker\Zed\Transfer\Business\Model\Generator;
 
 interface LoaderInterface
 {
-    /**
-     * @return array
-     */
     public function getDefinitions(): array;
 }

@@ -33,9 +33,6 @@ class ValidatorConsole extends Console
      */
     public const OPTION_BUNDLE = 'bundle';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();

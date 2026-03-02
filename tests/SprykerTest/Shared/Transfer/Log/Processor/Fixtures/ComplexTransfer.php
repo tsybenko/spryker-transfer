@@ -73,9 +73,6 @@ class ComplexTransfer extends AbstractTransfer implements TransferInterface
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getArray(): array
     {
         return $this->array;
@@ -93,9 +90,6 @@ class ComplexTransfer extends AbstractTransfer implements TransferInterface
         return $this;
     }
 
-    /**
-     * @return \ArrayObject
-     */
     public function getEmptyTransfer(): ArrayObject
     {
         return $this->emptyTransfer;
@@ -113,9 +107,6 @@ class ComplexTransfer extends AbstractTransfer implements TransferInterface
         return $this;
     }
 
-    /**
-     * @return \SprykerTest\Shared\Transfer\Log\Processor\Fixtures\SimpleTransfer
-     */
     public function getInnerTransfer(): SimpleTransfer
     {
         return $this->innerTransfer;

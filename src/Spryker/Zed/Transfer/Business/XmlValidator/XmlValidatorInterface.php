@@ -9,17 +9,8 @@ namespace Spryker\Zed\Transfer\Business\XmlValidator;
 
 interface XmlValidatorInterface
 {
-    /**
-     * @param string $file
-     * @param string $schema
-     *
-     * @return void
-     */
     public function validate(string $file, string $schema): void;
 
-    /**
-     * @return bool
-     */
     public function isValid(): bool;
 
     /**

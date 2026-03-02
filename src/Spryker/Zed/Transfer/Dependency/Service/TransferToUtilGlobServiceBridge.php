@@ -22,12 +22,6 @@ class TransferToUtilGlobServiceBridge implements TransferToUtilGlobServiceInterf
         $this->utilGlobService = $utilGlobService;
     }
 
-    /**
-     * @param string $pattern
-     * @param int $flags
-     *
-     * @return array
-     */
     public function glob(string $pattern, int $flags = 0): array
     {
         return $this->utilGlobService->glob($pattern, $flags);

@@ -9,9 +9,6 @@ namespace SprykerTest\Zed\Transfer\Business\Model\Generator;
 
 class TransferDefinitionMergerHelper
 {
-    /**
-     * @return array
-     */
     public function getTransferDefinition1(): array
     {
         return [
@@ -30,9 +27,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getTransferDefinition2(): array
     {
         return [
@@ -58,9 +52,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getExpectedTransfer(): array
     {
         return [
@@ -88,9 +79,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getItemMetadataTransfer(): array
     {
         return [
@@ -115,9 +103,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getItemMetadata(): array
     {
         return [
@@ -142,9 +127,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getExpectedMergedItemMetadataTransfer(): array
     {
         return [
@@ -184,9 +166,6 @@ class TransferDefinitionMergerHelper
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getExpectedMergedItemMetadata(): array
     {
         return [

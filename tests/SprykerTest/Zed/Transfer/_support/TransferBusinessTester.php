@@ -47,9 +47,6 @@ class TransferBusinessTester extends Actor
      */
     protected const TRANSFER_DESTINATION_DIR = 'Transfers';
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\FinderInterface
-     */
     public function createTransferDefinitionFinder(): FinderInterface
     {
         $transferDirectory = $this->getVirtualDirectory(['transfer' => ['foo.transfer.xml' => 'content']]);
@@ -64,9 +61,6 @@ class TransferBusinessTester extends Actor
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\FinderInterface
-     */
     public function createEntityTransferDefinitionFinder(): FinderInterface
     {
         $entityTransferDirectory = $this->getVirtualDirectory(['entity-transfer' => ['foo.schema.xml' => 'content']]);
@@ -86,9 +80,6 @@ class TransferBusinessTester extends Actor
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\FinderInterface
-     */
     public function createDataBuilderDefinitionFinder(): FinderInterface
     {
         $dataBuilderDirectory = $this->getVirtualDirectory(['data-builder' => ['foo.databuilder.xml' => 'content']]);
@@ -114,19 +105,11 @@ class TransferBusinessTester extends Actor
         return $facade;
     }
 
-    /**
-     * @return string
-     */
     public function getTransferDestinationDir(): string
     {
         return static::TRANSFER_DESTINATION_DIR;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
     public function isEntityTransfersExist(string $path): bool
     {
         foreach ($this->getVirtualDirectoryContents($path) as $transferFileName) {
@@ -138,11 +121,6 @@ class TransferBusinessTester extends Actor
         return false;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
     public function isDataTransfersExist(string $path): bool
     {
         foreach ($this->getVirtualDirectoryContents($path) as $transferFileName) {
@@ -154,32 +132,16 @@ class TransferBusinessTester extends Actor
         return false;
     }
 
-    /**
-     * @param string $transferFileName
-     *
-     * @return bool
-     */
     protected function isDataTransfer(string $transferFileName): bool
     {
         return $this->isTransferExtending($transferFileName, AbstractTransfer::class);
     }
 
-    /**
-     * @param string $transferFileName
-     *
-     * @return bool
-     */
     protected function isEntityTransfer(string $transferFileName): bool
     {
         return $this->isTransferExtending($transferFileName, AbstractEntityTransfer::class);
     }
 
-    /**
-     * @param string $transferFileName
-     * @param string $expectedBaseClassName
-     *
-     * @return bool
-     */
     protected function isTransferExtending(string $transferFileName, string $expectedBaseClassName): bool
     {
         $transferFullyQualifiedClassName = $this->buildTransferClassName($transferFileName);
@@ -196,11 +158,6 @@ class TransferBusinessTester extends Actor
         return $parentClassName === $expectedBaseClassName;
     }
 
-    /**
-     * @param string $transferFileName
-     *
-     * @return string|null
-     */
     protected function buildTransferClassName(string $transferFileName): ?string
     {
         $className = pathinfo($transferFileName, PATHINFO_FILENAME);
@@ -212,27 +169,16 @@ class TransferBusinessTester extends Actor
         return sprintf('Generated\Shared\Transfer\%s', $className);
     }
 
-    /**
-     * @param string $className
-     *
-     * @return bool
-     */
     protected function isTransferClassName(string $className): bool
     {
         return (substr($className, -8) === 'Transfer');
     }
 
-    /**
-     * @return string
-     */
     protected function getTransferDestinationUrl(): string
     {
         return $this->getVirtualDirectory() . $this->getTransferDestinationDir() . DIRECTORY_SEPARATOR;
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\TransferBusinessFactory
-     */
     protected function getTransferBusinessFactory(): TransferBusinessFactory
     {
         $this->mockConfigMethod('getClassTargetDirectory', function () {

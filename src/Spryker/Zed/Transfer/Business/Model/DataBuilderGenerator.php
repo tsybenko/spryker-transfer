@@ -28,11 +28,6 @@ class DataBuilderGenerator
      */
     protected $definitionBuilder;
 
-    /**
-     * @param \Psr\Log\LoggerInterface $messenger
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\GeneratorInterface $generator
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\DefinitionBuilderInterface $definitionBuilder
-     */
     public function __construct(LoggerInterface $messenger, GeneratorInterface $generator, DefinitionBuilderInterface $definitionBuilder)
     {
         $this->messenger = $messenger;
@@ -40,9 +35,6 @@ class DataBuilderGenerator
         $this->definitionBuilder = $definitionBuilder;
     }
 
-    /**
-     * @return void
-     */
     public function execute(): void
     {
         $definitions = $this->definitionBuilder->getDefinitions($this->messenger);

@@ -23,9 +23,6 @@ use Spryker\Zed\Transfer\Business\XmlValidator\XmlXsdSchemaValidator;
  */
 class XmlXsdSchemaValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCanLogError(): void
     {
         // Arrange
@@ -43,9 +40,6 @@ class XmlXsdSchemaValidatorTest extends Unit
         $this->assertStringContainsString('error.transfer.xml', $xmlValidator->getErrors()[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testCanLogExceptions(): void
     {
         // Arrange
@@ -66,9 +60,6 @@ class XmlXsdSchemaValidatorTest extends Unit
         $this->assertStringContainsString('exception.transfer.xml', $xmlValidator->getErrors()[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testCanResetErrorLog(): void
     {
         // Arrange

@@ -65,11 +65,6 @@ class DataBuilderClassGenerator implements GeneratorInterface
         return $fileName;
     }
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\DataBuilderDefinitionInterface $dataBuilderDefinition
-     *
-     * @return array
-     */
     public function getTwigData(DataBuilderDefinitionInterface $dataBuilderDefinition): array
     {
         return [

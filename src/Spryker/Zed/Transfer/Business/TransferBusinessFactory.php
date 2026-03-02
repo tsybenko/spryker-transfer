@@ -214,9 +214,6 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\GeneratedTransferDirectoryInterface
-     */
     public function createDataTransferGeneratedDirectory(): GeneratedTransferDirectoryInterface
     {
         return new GeneratedTransferDirectory(
@@ -226,9 +223,6 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\GeneratedTransferDirectoryInterface
-     */
     public function createEntityTransferGeneratedDirectory(): GeneratedTransferDirectoryInterface
     {
         return new GeneratedTransferDirectory(
@@ -250,9 +244,6 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\GeneratedFileFinder\GeneratedFileFinderInterface
-     */
     public function createDirectoryFileFinder(): GeneratedFileFinderInterface
     {
         return new DirectoryFileFinder(
@@ -260,9 +251,6 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\GeneratedFileFinder\GeneratedFileFinderInterface
-     */
     public function createDataTransferFileFinder(): GeneratedFileFinderInterface
     {
         return new DataTransferFileFinder(
@@ -270,9 +258,6 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\GeneratedFileFinder\GeneratedFileFinderInterface
-     */
     public function createEntityTransferFileFinder(): GeneratedFileFinderInterface
     {
         return new EntityTransferFileFinder(
@@ -389,25 +374,16 @@ class TransferBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Dependency\Service\TransferToUtilGlobServiceInterface
-     */
     public function getUtilGlobService(): TransferToUtilGlobServiceInterface
     {
         return $this->getProvidedDependency(TransferDependencyProvider::SERVICE_UTIL_GLOB);
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Dependency\Facade\TransferToPropelFacadeInterface
-     */
     public function getPropelFacade(): TransferToPropelFacadeInterface
     {
         return $this->getProvidedDependency(TransferDependencyProvider::FACADE_PROPEL);
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\XmlValidator\XmlValidatorInterface
-     */
     public function createXmlValidator(): XmlValidatorInterface
     {
         return new XmlXsdSchemaValidator();

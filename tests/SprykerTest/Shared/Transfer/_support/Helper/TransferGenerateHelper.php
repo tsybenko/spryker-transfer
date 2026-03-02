@@ -77,9 +77,6 @@ class TransferGenerateHelper extends Module
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setDefaultConfig(): void
     {
         $this->config = [
@@ -96,9 +93,6 @@ class TransferGenerateHelper extends Module
         ];
     }
 
-    /**
-     * @return void
-     */
     protected function generateTransferObjects(): void
     {
         $transferFacade = $this->getFacade();
@@ -122,9 +116,6 @@ class TransferGenerateHelper extends Module
         }
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\TransferFacade
-     */
     protected function getFacade(): TransferFacade
     {
         return new TransferFacade();
@@ -191,9 +182,6 @@ class TransferGenerateHelper extends Module
             ->name($filenamePattern);
     }
 
-    /**
-     * @return bool
-     */
     protected function hasEntityTransferSchemaDefinitionFiles(): bool
     {
         try {
@@ -210,9 +198,6 @@ class TransferGenerateHelper extends Module
         }
     }
 
-    /**
-     * @return string
-     */
     protected function getTargetSchemaDirectory(): string
     {
         $targetSchemaDirectory = rtrim(APPLICATION_ROOT_DIR, '/') . DIRECTORY_SEPARATOR . static::DEFAULT_TRANSFER_SCHEMA_TARGET_DIRECTORY;
@@ -228,9 +213,6 @@ class TransferGenerateHelper extends Module
         return $targetSchemaDirectory;
     }
 
-    /**
-     * @return void
-     */
     protected function addAutoloader(): void
     {
         spl_autoload_register(function ($className) {

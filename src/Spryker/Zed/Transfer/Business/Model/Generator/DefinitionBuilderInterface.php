@@ -11,10 +11,5 @@ use Psr\Log\LoggerInterface;
 
 interface DefinitionBuilderInterface
 {
-    /**
-     * @param \Psr\Log\LoggerInterface $messenger
-     *
-     * @return array
-     */
     public function getDefinitions(LoggerInterface $messenger): array;
 }

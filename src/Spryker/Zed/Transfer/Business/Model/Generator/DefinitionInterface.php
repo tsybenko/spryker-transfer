@@ -9,9 +9,6 @@ namespace Spryker\Zed\Transfer\Business\Model\Generator;
 
 interface DefinitionInterface
 {
-    /**
-     * @return string
-     */
     public function getName(): string;
 
     /**

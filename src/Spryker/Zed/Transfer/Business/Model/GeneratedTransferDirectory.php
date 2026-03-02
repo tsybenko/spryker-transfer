@@ -39,9 +39,6 @@ class GeneratedTransferDirectory implements GeneratedTransferDirectoryInterface
         $this->fileFinder = $fileFinder;
     }
 
-    /**
-     * @return void
-     */
     public function clear(): void
     {
         if (!$this->fileSystem->exists($this->directoryPath)) {

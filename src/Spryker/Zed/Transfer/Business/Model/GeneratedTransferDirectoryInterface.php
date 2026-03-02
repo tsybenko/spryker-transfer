@@ -9,8 +9,5 @@ namespace Spryker\Zed\Transfer\Business\Model;
 
 interface GeneratedTransferDirectoryInterface
 {
-    /**
-     * @return void
-     */
     public function clear(): void;
 }

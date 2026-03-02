@@ -52,9 +52,6 @@ class EntityTransferDefinitionLoader extends AbstractTransferDefinitionLoader
      */
     public const ENTITY_SCHEMA_PATHNAME = 'path';
 
-    /**
-     * @return void
-     */
     protected function loadDefinitions(): void
     {
         $xmlTransferDefinitions = $this->finder->getXmlTransferDefinitionFiles();

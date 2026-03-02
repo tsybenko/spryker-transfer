@@ -24,10 +24,6 @@ class TransferDefinitionFinder implements FinderInterface
      */
     protected $globService;
 
-    /**
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     * @param \Spryker\Zed\Transfer\Dependency\Service\TransferToUtilGlobServiceInterface $globService
-     */
     public function __construct(TransferConfig $transferConfig, TransferToUtilGlobServiceInterface $globService)
     {
         $this->transferConfig = $transferConfig;
@@ -65,11 +61,6 @@ class TransferDefinitionFinder implements FinderInterface
         return $existingDirectories;
     }
 
-    /**
-     * @param string $sourceDirectory
-     *
-     * @return array
-     */
     protected function glob(string $sourceDirectory): array
     {
         return $this->globService->glob($sourceDirectory, GLOB_ONLYDIR | GLOB_NOSORT);

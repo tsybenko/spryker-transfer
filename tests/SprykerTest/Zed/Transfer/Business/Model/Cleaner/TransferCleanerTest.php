@@ -29,9 +29,6 @@ class TransferCleanerTest extends Unit
      */
     public const TEST_FILE_NAME = 'TestTransfer.php';
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         $testDirectory = $this->getTestDirectory();
@@ -42,17 +39,11 @@ class TransferCleanerTest extends Unit
         file_put_contents($testDirectory . static::TEST_FILE_NAME, '');
     }
 
-    /**
-     * @return string
-     */
     private function getTestDirectory(): string
     {
         return codecept_data_dir('test_files/tmp/');
     }
 
-    /**
-     * @return void
-     */
     public function tearDown(): void
     {
         $testFile1 = $this->getTestDirectory() . static::TEST_FILE_NAME;
@@ -65,9 +56,6 @@ class TransferCleanerTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteShouldDeleteAllFilesInADirectory(): void
     {
         $this->assertTrue(file_exists($this->getTestDirectory() . static::TEST_FILE_NAME));

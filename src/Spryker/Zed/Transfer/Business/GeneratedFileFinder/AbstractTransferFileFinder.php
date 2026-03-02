@@ -23,19 +23,11 @@ abstract class AbstractTransferFileFinder implements GeneratedFileFinderInterfac
      */
     protected $finder;
 
-    /**
-     * @param \Symfony\Component\Finder\Finder $finder
-     */
     public function __construct(Finder $finder)
     {
         $this->finder = $finder;
     }
 
-    /**
-     * @param string $directoryPath
-     *
-     * @return \Symfony\Component\Finder\Finder
-     */
     public function findFiles(string $directoryPath): Finder
     {
         $finder = clone $this->finder;
@@ -48,11 +40,6 @@ abstract class AbstractTransferFileFinder implements GeneratedFileFinderInterfac
         return $finder;
     }
 
-    /**
-     * @param \Symfony\Component\Finder\SplFileInfo $fileEntry
-     *
-     * @return bool
-     */
     protected function filterTransferFileEntry(SplFileInfo $fileEntry): bool
     {
         $filename = $fileEntry->getFilename();
@@ -65,21 +52,11 @@ abstract class AbstractTransferFileFinder implements GeneratedFileFinderInterfac
         return $this->extendsExpectedBaseClass($transferClassName);
     }
 
-    /**
-     * @param string $transferFileName
-     *
-     * @return string
-     */
     protected function buildFullyQualifiedTransferClassName(string $transferFileName): string
     {
         return sprintf(static::TRANSFER_NAMESPACE_PATTERN, $transferFileName);
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string|null
-     */
     protected function getTransferParentClassName(string $transferClassName): ?string
     {
         if (!class_exists($transferClassName)) {
@@ -92,11 +69,6 @@ abstract class AbstractTransferFileFinder implements GeneratedFileFinderInterfac
         return $parentClass ? $parentClass->getName() : null;
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return bool
-     */
     protected function extendsExpectedBaseClass(string $transferClassName): bool
     {
         $parentClassName = $this->getTransferParentClassName($transferClassName);
@@ -104,8 +76,5 @@ abstract class AbstractTransferFileFinder implements GeneratedFileFinderInterfac
         return $parentClassName === $this->getBaseClassToMatch();
     }
 
-    /**
-     * @return string
-     */
     abstract protected function getBaseClassToMatch(): string;
 }

@@ -12,14 +12,8 @@ namespace Spryker\Zed\Transfer\Business\Model\Generator;
  */
 interface ClassDefinitionInterface extends DefinitionInterface
 {
-    /**
-     * @return array
-     */
     public function getConstants(): array;
 
-    /**
-     * @return array
-     */
     public function getProperties(): array;
 
     /**
@@ -27,24 +21,12 @@ interface ClassDefinitionInterface extends DefinitionInterface
      */
     public function getPropertyNameMap(): array;
 
-    /**
-     * @return array
-     */
     public function getConstructorDefinition(): array;
 
-    /**
-     * @return array
-     */
     public function getMethods(): array;
 
-    /**
-     * @return array
-     */
     public function getNormalizedProperties(): array;
 
-    /**
-     * @return string|null
-     */
     public function getDeprecationDescription(): ?string;
 
     /**
@@ -52,13 +34,7 @@ interface ClassDefinitionInterface extends DefinitionInterface
      */
     public function getUseStatements(): array;
 
-    /**
-     * @return string|null
-     */
     public function getEntityNamespace(): ?string;
 
-    /**
-     * @return bool
-     */
     public function isDebugMode(): bool;
 }

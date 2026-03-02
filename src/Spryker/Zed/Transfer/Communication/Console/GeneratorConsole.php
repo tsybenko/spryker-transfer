@@ -30,9 +30,6 @@ class GeneratorConsole extends Console
      */
     public const COMMAND_DESCRIPTION = 'Generates data and entity transfer objects from transfer XML definition files and Propel schema definition files';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();
@@ -42,12 +39,6 @@ class GeneratorConsole extends Console
             ->setHelp('<info>' . static::COMMAND_NAME . ' -h</info>');
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return int
-     */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $facade = $this->getFacade();

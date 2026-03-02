@@ -29,12 +29,6 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
      */
     protected $errors = [];
 
-    /**
-     * @param string $file
-     * @param string $schema
-     *
-     * @return void
-     */
     public function validate(string $file, string $schema): void
     {
         $this->resetErrors();
@@ -49,9 +43,6 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
         }
     }
 
-    /**
-     * @return bool
-     */
     public function isValid(): bool
     {
         return !$this->errors;
@@ -65,11 +56,6 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
         return $this->errors;
     }
 
-    /**
-     * @param string $filePath
-     *
-     * @return \DOMDocument
-     */
     protected function createDomDocument(string $filePath): DOMDocument
     {
         $xmlDocument = new DOMDocument();
@@ -116,9 +102,6 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
         );
     }
 
-    /**
-     * @return void
-     */
     protected function logXmlErrors(): void
     {
         /** @var array<\LibXMLError> $errors */
@@ -131,19 +114,11 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
         libxml_clear_errors();
     }
 
-    /**
-     * @return void
-     */
     protected function resetErrors(): void
     {
         $this->errors = [];
     }
 
-    /**
-     * @param \LibXMLError $error
-     *
-     * @return void
-     */
     protected function logXmlError(LibXMLError $error): void
     {
         $message = sprintf('%s:%s', $error->code, $error->message);
@@ -151,12 +126,6 @@ class XmlXsdSchemaValidator implements XmlValidatorInterface
         $this->logError($message, $error->file);
     }
 
-    /**
-     * @param string $errorMessage
-     * @param string $fileName
-     *
-     * @return void
-     */
     protected function logError(string $errorMessage, string $fileName): void
     {
         $this->errors[] = sprintf('"%s" in %s', $errorMessage, $fileName);

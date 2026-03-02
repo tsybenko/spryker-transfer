@@ -46,9 +46,6 @@ class TransferSanitizerProcessorTest extends Unit
         $this->assertArrayHasKey('transfer', $result['extra']);
     }
 
-    /**
-     * @return array
-     */
     public function getContext(): array
     {
         $transfer = new ComplexTransfer();
@@ -59,9 +56,6 @@ class TransferSanitizerProcessorTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testIfContextDoesNotContainTransferDoNothing(): void
     {
         $record = ['message' => 'message', 'context' => ''];

@@ -36,9 +36,6 @@ class TransferDefinitionLoader extends AbstractTransferDefinitionLoader
      */
     protected static $filter;
 
-    /**
-     * @return void
-     */
     protected function loadDefinitions(): void
     {
         $xmlTransferDefinitions = $this->finder->getXmlTransferDefinitionFiles();
@@ -58,11 +55,6 @@ class TransferDefinitionLoader extends AbstractTransferDefinitionLoader
         });
     }
 
-    /**
-     * @param string $fileName
-     *
-     * @return string
-     */
     protected function getBundleFromPathName(string $fileName): string
     {
         $filterChain = new FilterChain();
@@ -133,9 +125,6 @@ class TransferDefinitionLoader extends AbstractTransferDefinitionLoader
         }
     }
 
-    /**
-     * @return \Laminas\Filter\FilterChain
-     */
     protected function getFilter(): FilterChain
     {
         if (static::$filter === null) {

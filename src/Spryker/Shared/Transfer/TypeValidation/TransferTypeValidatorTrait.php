@@ -121,12 +121,6 @@ trait TransferTypeValidatorTrait
         return $typeAssertFunctionName;
     }
 
-    /**
-     * @param array $array
-     * @param string $elementType
-     *
-     * @return bool
-     */
     protected function checkArrayElementsAreOfExpectedType(array $array, string $elementType): bool
     {
         $typeAssertFunction = $this->getTypeAssertFunction($elementType);
@@ -208,9 +202,6 @@ trait TransferTypeValidatorTrait
         return $propertyType;
     }
 
-    /**
-     * @return string
-     */
     protected function getLogFilePath(): string
     {
         return sys_get_temp_dir() . '/transfer-type-error.log';

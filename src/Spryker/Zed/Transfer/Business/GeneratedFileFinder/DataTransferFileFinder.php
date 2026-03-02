@@ -11,9 +11,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 class DataTransferFileFinder extends AbstractTransferFileFinder
 {
-    /**
-     * @return string
-     */
     protected function getBaseClassToMatch(): string
     {
         return AbstractTransfer::class;

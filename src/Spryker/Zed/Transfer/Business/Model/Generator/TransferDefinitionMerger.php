@@ -59,9 +59,6 @@ class TransferDefinitionMerger implements MergerInterface
      */
     protected array $originalNames = [];
 
-    /**
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     */
     public function __construct(TransferConfig $transferConfig)
     {
         $this->transferConfig = $transferConfig;
@@ -410,25 +407,16 @@ class TransferDefinitionMerger implements MergerInterface
         return true;
     }
 
-    /**
-     * @return bool
-     */
     protected function isDefaultMergeStrategy(): bool
     {
         return $this->transferConfig->getPropertyDescriptionMergeStrategy() === TransferConstants::PROPERTY_DESCRIPTION_MERGE_STRATEGY_DEFAULT;
     }
 
-    /**
-     * @return bool
-     */
     protected function isConcatMergeStrategy(): bool
     {
         return $this->transferConfig->getPropertyDescriptionMergeStrategy() === TransferConstants::PROPERTY_DESCRIPTION_MERGE_STRATEGY_CONCAT;
     }
 
-    /**
-     * @return bool
-     */
     protected function isGetFirstMergeStrategy(): bool
     {
         return $this->transferConfig->getPropertyDescriptionMergeStrategy() === TransferConstants::PROPERTY_DESCRIPTION_MERGE_STRATEGY_GET_FIRST;
@@ -449,11 +437,6 @@ class TransferDefinitionMerger implements MergerInterface
         }
     }
 
-    /**
-     * @param string $transferName
-     *
-     * @return string
-     */
     protected function getNormalizedTransferName(string $transferName): string
     {
         if ($this->hasTransferSuffix($transferName)) {
@@ -463,11 +446,6 @@ class TransferDefinitionMerger implements MergerInterface
         return $transferName;
     }
 
-    /**
-     * @param string $transferName
-     *
-     * @return bool
-     */
     protected function hasTransferSuffix(string $transferName): bool
     {
         if ($transferName === static::TRANSFER_SUFFIX) {

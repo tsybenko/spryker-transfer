@@ -33,9 +33,6 @@ class TransferDefinitionMergerTest extends Unit
      */
     protected TransferBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testMergeShouldReturnMergedTransferDefinition(): void
     {
         $helper = new TransferDefinitionMergerHelper();
@@ -52,9 +49,6 @@ class TransferDefinitionMergerTest extends Unit
         $this->assertEquals($expected, $merger->merge($transferDefinitions));
     }
 
-    /**
-     * @return void
-     */
     public function testMergeShouldMergeWithSameNameDefineDifferentAttributesWhenOverrideIsActiveForDataBuilderRuleAttribute(): void
     {
         // Arrange
@@ -87,9 +81,6 @@ class TransferDefinitionMergerTest extends Unit
         $this->assertSame('shuffle(array("new"))', $transferDefinition['Transfer']['property']['propertyA']['dataBuilderRule']);
     }
 
-    /**
-     * @return void
-     */
     public function testMergeShouldThrowExceptionIfTwoPropertiesWithSameNameDefineDifferentAttributes(): void
     {
         $this->expectException('Exception');
@@ -146,9 +137,6 @@ class TransferDefinitionMergerTest extends Unit
         $this->assertEquals($expected, $result, $testDescription);
     }
 
-    /**
-     * @return void
-     */
     public function testMergePreservesOriginalTransferNames(): void
     {
         // Arrange
@@ -172,9 +160,6 @@ class TransferDefinitionMergerTest extends Unit
         $this->assertEquals('ItemMetadataTransfer', $result['ItemMetadataTransfer']['name']);
     }
 
-    /**
-     * @return void
-     */
     public function testGetNormalizedTransferNameShouldRemoveTransferSuffix(): void
     {
         // Arrange
@@ -192,9 +177,6 @@ class TransferDefinitionMergerTest extends Unit
         $this->assertEquals('User', $getNormalizedTransferNameMethod->invoke($merger, 'User'));
     }
 
-    /**
-     * @return void
-     */
     public function testHasTransferSuffixShouldDetectTransferSuffix(): void
     {
         // Arrange
@@ -254,9 +236,6 @@ class TransferDefinitionMergerTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testMergeResultsAreIdenticalRegardlessOfTransferNameValidationSetting(): void
     {
         // Arrange
@@ -302,9 +281,6 @@ class TransferDefinitionMergerTest extends Unit
         return $transferConfig;
     }
 
-    /**
-     * @return array
-     */
     protected function provideMergeTestCases(): array
     {
         $helper = new TransferDefinitionMergerHelper();

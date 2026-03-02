@@ -27,9 +27,6 @@ class DataBuilderGeneratorConsole extends Console
      */
     public const COMMAND_DESCRIPTION = 'Generates data builders from databuilder XML definition files';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();

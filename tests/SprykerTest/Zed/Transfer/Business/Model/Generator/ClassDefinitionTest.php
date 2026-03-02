@@ -33,9 +33,6 @@ use Spryker\Zed\Transfer\TransferConfig;
  */
 class ClassDefinitionTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetNameShouldReturnNormalizedTransferName(): void
     {
         $transferDefinition = [
@@ -47,9 +44,6 @@ class ClassDefinitionTest extends Unit
         $this->assertSame('NameTransfer', $classDefinition->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testIfOnePropertyIsSetGetPropertiesShouldReturnArrayWithOneProperty(): void
     {
         $property = $this->getProperty('property1', 'string');
@@ -69,16 +63,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $given);
     }
 
-    /**
-     * @param string $name
-     * @param string $type
-     * @param string|null $singular
-     * @param string|null $return
-     * @param array $bundles
-     * @param bool $isArrayCollection
-     *
-     * @return array
-     */
     private function getProperty(
         string $name,
         string $type,
@@ -102,9 +86,6 @@ class ClassDefinitionTest extends Unit
         return $property;
     }
 
-    /**
-     * @return void
-     */
     public function testIfMoreThenOnePropertyIsSetGetPropertiesShouldReturnArrayWithAllProperties(): void
     {
         $transferDefinition = [
@@ -130,9 +111,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedProperty, $givenProperty);
     }
 
-    /**
-     * @return void
-     */
     public function testIfPropertyTypeIsArrayWithNameShouldBeMarkedAsArray(): void
     {
         $transferDefinition = [
@@ -149,9 +127,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedProperty, $givenProperty);
     }
 
-    /**
-     * @return void
-     */
     public function testIfPropertyNameIsCapitalizedNameShouldBeNormalized(): void
     {
         $transferDefinition = [
@@ -168,9 +143,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedProperty, $givenProperty);
     }
 
-    /**
-     * @return void
-     */
     public function testIfPropertyTypeIsCollectionTheReturnTypeShouldBeAnArrayObject(): void
     {
         $transferDefinition = [
@@ -187,9 +159,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedProperty, $givenProperty);
     }
 
-    /**
-     * @return void
-     */
     public function testIfPropertyTypeIsTransferObjectTheReturnTypeShouldBeTransferObject(): void
     {
         $property = $this->getProperty('property1', 'Type');
@@ -208,9 +177,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedProperty, $givenProperty);
     }
 
-    /**
-     * @return void
-     */
     public function testSimplePropertyShouldHaveOnlyGetterAndSetter(): void
     {
         $this->tester->mockEnvironmentConfig(TransferConstants::IS_DEBUG_ENABLED, false);
@@ -234,9 +200,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedGetter, $givenGetter);
     }
 
-    /**
-     * @return void
-     */
     public function testSimpleStringPropertyShouldHaveOnlySetterWithoutTypeHint(): void
     {
         $this->tester->mockEnvironmentConfig(TransferConstants::IS_DEBUG_ENABLED, false);
@@ -256,9 +219,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedSetter, $givenSetter);
     }
 
-    /**
-     * @return void
-     */
     public function testCollectionPropertyShouldHaveOnlySetterWithTypeAsTypeHint(): void
     {
         $transferDefinition = [
@@ -276,9 +236,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expectedSetter, $givenSetter);
     }
 
-    /**
-     * @return void
-     */
     public function testCollectionPropertyShouldHaveGetSetAndAdd(): void
     {
         $bundles = ['Bundle1'];
@@ -305,9 +262,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $given);
     }
 
-    /**
-     * @return void
-     */
     public function testTypedArray(): void
     {
         $bundles = ['Bundle1'];
@@ -336,9 +290,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $properties);
     }
 
-    /**
-     * @return void
-     */
     public function testAbstractAttributesTransfer(): void
     {
         $bundles = ['Bundle1'];
@@ -381,9 +332,6 @@ class ClassDefinitionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAbstractAttributesArrayTransfer(): void
     {
         $bundles = ['Bundle1'];
@@ -399,9 +347,6 @@ class ClassDefinitionTest extends Unit
         $classDefinition->setDefinition($transferDefinition);
     }
 
-    /**
-     * @return void
-     */
     public function testCollectionPropertyWithSingularDefinitionShouldHaveAddWithDefinedName(): void
     {
         $property = $this->getProperty('properties', 'Type[]', 'property');
@@ -428,21 +373,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $given);
     }
 
-    /**
-     * @param string $method
-     * @param string $property
-     * @param string|null $var
-     * @param string|null $return
-     * @param string|null $typeHint
-     * @param string|null $constant
-     * @param array $bundles
-     * @param bool|null $hasDefaultNull
-     * @param bool|null $valueObject
-     * @param bool $isTypeAssertionEnabled
-     * @param bool $isAbstractAttributesTransfer
-     *
-     * @return array
-     */
     private function getMethod(
         string $method,
         string $property,
@@ -495,18 +425,6 @@ class ClassDefinitionTest extends Unit
         return $method;
     }
 
-    /**
-     * @param string $method
-     * @param string $property
-     * @param string|null $var
-     * @param string|null $return
-     * @param string|null $typeHint
-     * @param string|null $constant
-     * @param array $bundles
-     * @param bool|null $hasDefaultNull
-     *
-     * @return array
-     */
     private function getGetMethod(
         string $method,
         string $property,
@@ -525,18 +443,6 @@ class ClassDefinitionTest extends Unit
         return $method;
     }
 
-    /**
-     * @param string $method
-     * @param string $property
-     * @param string $parent
-     * @param string|null $var
-     * @param string|null $return
-     * @param string|null $typeHint
-     * @param string|null $constant
-     * @param array $bundles
-     *
-     * @return array
-     */
     private function getCollectionMethod(
         string $method,
         string $property,
@@ -556,9 +462,6 @@ class ClassDefinitionTest extends Unit
         return $method;
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidPropertyNameShouldThrowException(): void
     {
         $this->expectException(InvalidNameException::class);
@@ -606,9 +509,6 @@ class ClassDefinitionTest extends Unit
         return $property;
     }
 
-    /**
-     * @return void
-     */
     public function testTypedAssociativeSimpleArray(): void
     {
         $transferDefinition = [
@@ -633,9 +533,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $properties);
     }
 
-    /**
-     * @return void
-     */
     public function testTypedAssociativeCollectionArray(): void
     {
         $transferDefinition = [
@@ -660,9 +557,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $properties);
     }
 
-    /**
-     * @return void
-     */
     public function testTypedYesAssociativeCollectionArray(): void
     {
         $transferDefinition = [
@@ -687,9 +581,6 @@ class ClassDefinitionTest extends Unit
         $this->assertEquals($expected, $properties);
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidAssociativeTypeException(): void
     {
         $this->expectException(InvalidAssociativeTypeException::class);
@@ -702,9 +593,6 @@ class ClassDefinitionTest extends Unit
         $classDefinition->setDefinition($transferDefinition);
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidAssociativeValueException(): void
     {
         $this->expectException(InvalidAssociativeValueException::class);
@@ -765,9 +653,6 @@ class ClassDefinitionTest extends Unit
         $this->assertMethodHasCorrectTypeShim($classDefinition, $expectedTypes);
     }
 
-    /**
-     * @return array
-     */
     public function transferDefinitionTypeIsCorrectlyShimmedDataProvider(): array
     {
         return [
@@ -836,9 +721,6 @@ class ClassDefinitionTest extends Unit
         return $this->createMock(TransferConfig::class);
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\ClassDefinition
-     */
     protected function createClassDefinition(): ClassDefinition
     {
         $classDefinition = new ClassDefinition(

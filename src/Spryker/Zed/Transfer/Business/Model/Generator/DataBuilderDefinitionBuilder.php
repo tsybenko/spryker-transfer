@@ -26,11 +26,6 @@ class DataBuilderDefinitionBuilder extends AbstractDefinitionBuilder
      */
     protected $dataBuilderDefinition;
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\LoaderInterface $loader
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\MergerInterface $merger
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\DataBuilderDefinitionInterface $dataBuilderDefinition
-     */
     public function __construct(LoaderInterface $loader, MergerInterface $merger, DataBuilderDefinitionInterface $dataBuilderDefinition)
     {
         $this->loader = $loader;

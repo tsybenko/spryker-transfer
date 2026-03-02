@@ -30,11 +30,6 @@ class EntityTransferDefinitionFinder implements FinderInterface
      */
     protected $propelFacade;
 
-    /**
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     * @param \Spryker\Zed\Transfer\Dependency\Service\TransferToUtilGlobServiceInterface $globService
-     * @param \Spryker\Zed\Transfer\Dependency\Facade\TransferToPropelFacadeInterface $propelFacade
-     */
     public function __construct(
         TransferConfig $transferConfig,
         TransferToUtilGlobServiceInterface $globService,
@@ -63,19 +58,11 @@ class EntityTransferDefinitionFinder implements FinderInterface
         return iterator_to_array($finder->getIterator());
     }
 
-    /**
-     * @return string
-     */
     protected function getPropelSchemaPath(): string
     {
         return $this->propelFacade->getSchemaDirectory();
     }
 
-    /**
-     * @param string $sourceDirectory
-     *
-     * @return array
-     */
     protected function glob(string $sourceDirectory): array
     {
         return $this->globService->glob($sourceDirectory, GLOB_ONLYDIR | GLOB_NOSORT);

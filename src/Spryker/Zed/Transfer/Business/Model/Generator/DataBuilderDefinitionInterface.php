@@ -13,13 +13,7 @@ namespace Spryker\Zed\Transfer\Business\Model\Generator;
  */
 interface DataBuilderDefinitionInterface extends DefinitionInterface
 {
-    /**
-     * @return array
-     */
     public function getRules(): array;
 
-    /**
-     * @return array
-     */
     public function getDependencies(): array;
 }

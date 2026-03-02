@@ -74,12 +74,6 @@ class DefinitionNormalizer implements DefinitionNormalizerInterface
         return $normalizedDefinitions;
     }
 
-    /**
-     * @param array $attributes
-     * @param string $module
-     *
-     * @return array
-     */
     protected function normalizeAttributes(array $attributes, string $module): array
     {
         if ($attributes === []) {

@@ -31,9 +31,6 @@ class DataBuilderDefinition implements DataBuilderDefinitionInterface
      */
     protected $dependencies = [];
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
@@ -109,25 +106,16 @@ class DataBuilderDefinition implements DataBuilderDefinitionInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTransferName(): string
     {
         return $this->transferName;
     }
 
-    /**
-     * @return array
-     */
     public function getRules(): array
     {
         return $this->rules;
     }
 
-    /**
-     * @return array
-     */
     public function getDependencies(): array
     {
         return $this->dependencies;

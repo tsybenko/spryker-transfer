@@ -23,41 +23,26 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class TransferConfigTest extends Unit
 {
-    /**
-     * @return \Spryker\Zed\Transfer\TransferConfig
-     */
     private function getConfig(): TransferConfig
     {
         return new TransferConfig();
     }
 
-    /**
-     * @return void
-     */
     public function testGetClassTargetDirectoryShouldReturnString(): void
     {
         $this->assertTrue(is_string($this->getConfig()->getClassTargetDirectory()));
     }
 
-    /**
-     * @return void
-     */
     public function testGetGeneratedTargetDirectoryShouldReturnString(): void
     {
         $this->assertTrue(is_string($this->getConfig()->getClassTargetDirectory()));
     }
 
-    /**
-     * @return void
-     */
     public function testGetSourceDirectoriesShouldReturnArray(): void
     {
         $this->assertTrue(is_array($this->getConfig()->getSourceDirectories()));
     }
 
-    /**
-     * @return void
-     */
     public function testGetSourceDirectoriesShouldReturnArrayWithTwoEntriesIfProjectAndVendorTransferExist(): void
     {
         $directory = APPLICATION_SOURCE_DIR . '/Foo/Shared/Bar/Transfer/';
@@ -69,9 +54,6 @@ class TransferConfigTest extends Unit
         $this->cleanTestDirectories();
     }
 
-    /**
-     * @return void
-     */
     public function cleanTestDirectories(): void
     {
         $filesystem = new Filesystem();
@@ -79,9 +61,6 @@ class TransferConfigTest extends Unit
         $filesystem->remove($directory);
     }
 
-    /**
-     * @return void
-     */
     public function testGetDataBuilderFileNamePatternReturnsString(): void
     {
         $this->assertIsString($this->getConfig()->getDataBuilderFileNamePattern());

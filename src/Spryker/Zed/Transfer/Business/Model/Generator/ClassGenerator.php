@@ -68,11 +68,6 @@ class ClassGenerator implements GeneratorInterface
         return $fileName;
     }
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\ClassDefinitionInterface $definition
-     *
-     * @return array
-     */
     public function getPropertiesSegregatedByType(ClassDefinitionInterface $definition): array
     {
         $collections = [];
@@ -117,11 +112,6 @@ class ClassGenerator implements GeneratorInterface
         ];
     }
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\ClassDefinitionInterface $classDefinition
-     *
-     * @return array
-     */
     public function getTwigContext(ClassDefinitionInterface $classDefinition): array
     {
         $twigVariables = [

@@ -11,9 +11,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractEntityTransfer;
 
 class EntityTransferFileFinder extends AbstractTransferFileFinder
 {
-    /**
-     * @return string
-     */
     protected function getBaseClassToMatch(): string
     {
         return AbstractEntityTransfer::class;

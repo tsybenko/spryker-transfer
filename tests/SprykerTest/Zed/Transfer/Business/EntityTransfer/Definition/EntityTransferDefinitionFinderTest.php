@@ -28,9 +28,6 @@ class EntityTransferDefinitionFinderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetXmlTransferDefinitionFilesFindsEntityTransferDefinitions(): void
     {
         $transferDefinitions = $this->tester->createEntityTransferDefinitionFinder()->getXmlTransferDefinitionFiles();

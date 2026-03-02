@@ -37,9 +37,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class TransferGeneratorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testExecuteShouldGenerateExpectedTransfer(): void
     {
         $sourceDirectories = [
@@ -61,9 +58,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteWithStrictnessTransfer(): void
     {
         $sourceDirectories = [
@@ -88,9 +82,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteShouldGenerateExpectedMergedTransfer(): void
     {
         $sourceDirectories = [
@@ -115,9 +106,6 @@ class TransferGeneratorTest extends Unit
         $this->assertFileExists($this->getTargetDirectory() . 'AnEmptyOneTransfer.php');
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteShouldGenerateExpectedDeprecatedTransfer(): void
     {
         $sourceDirectories = [
@@ -139,9 +127,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteShouldGenerateExpectedMergedDeprecatedTransfer(): void
     {
         $sourceDirectories = [
@@ -165,9 +150,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testTypeShimShouldBeAppliedToDocblock(): void
     {
         $sourceDirectories = [
@@ -199,9 +181,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testTypeAssertionShouldBeInjectedIfConfigured(): void
     {
         $sourceDirectories = [
@@ -224,9 +203,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testStrictTransferCodeLayoutIsCorrect(): void
     {
         $sourceDirectories = [
@@ -252,9 +228,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testArrayRequireShouldBeChecked(): void
     {
         $sourceDirectories = [
@@ -276,13 +249,6 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @param string $expectedTransferFileName
-     * @param string $actualTransferClassName
-     * @param string $message
-     *
-     * @return void
-     */
     protected function assertTransferClassContent(
         string $expectedTransferFileName,
         string $actualTransferClassName,
@@ -298,17 +264,11 @@ class TransferGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return string
-     */
     protected function getTargetDirectory(): string
     {
         return codecept_output_dir();
     }
 
-    /**
-     * @return \Symfony\Component\Console\Logger\ConsoleLogger
-     */
     protected function getMessenger(): ConsoleLogger
     {
         $messenger = new ConsoleLogger(new ConsoleOutput(OutputInterface::VERBOSITY_QUIET));
@@ -316,9 +276,6 @@ class TransferGeneratorTest extends Unit
         return $messenger;
     }
 
-    /**
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\GeneratorInterface
-     */
     protected function getClassGenerator(): GeneratorInterface
     {
         $targetDirectory = $this->getTargetDirectory();
@@ -326,12 +283,6 @@ class TransferGeneratorTest extends Unit
         return new ClassGenerator($targetDirectory);
     }
 
-    /**
-     * @param array $sourceDirectories
-     * @param \Spryker\Zed\Transfer\TransferConfig|null $config
-     *
-     * @return \Spryker\Zed\Transfer\Business\Model\Generator\DefinitionBuilderInterface
-     */
     protected function getTransferDefinitionBuilder(array $sourceDirectories, ?TransferConfig $config = null): DefinitionBuilderInterface
     {
         if ($config === null) {

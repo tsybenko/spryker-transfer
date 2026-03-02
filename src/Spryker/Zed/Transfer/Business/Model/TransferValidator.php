@@ -76,12 +76,6 @@ class TransferValidator implements TransferValidatorInterface
      */
     protected $xmlValidator;
 
-    /**
-     * @param \Psr\Log\LoggerInterface $messenger
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\FinderInterface $finder
-     * @param \Spryker\Zed\Transfer\TransferConfig $transferConfig
-     * @param \Spryker\Zed\Transfer\Business\XmlValidator\XmlValidatorInterface $xmlValidator
-     */
     public function __construct(
         LoggerInterface $messenger,
         FinderInterface $finder,
@@ -254,11 +248,6 @@ class TransferValidator implements TransferValidatorInterface
         return empty($transfer['property']);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isValidSimpleType(string $type): bool
     {
         $whitelist = array_merge($this->simpleTypeWhitelist, ['array']);
@@ -273,21 +262,11 @@ class TransferValidator implements TransferValidatorInterface
         return false;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isArrayType(string $type): bool
     {
         return (bool)preg_match('#\[\]$#', $type);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isValidArrayType(string $type): bool
     {
         if (!preg_match('#^([a-z][a-z0-9]+)\[\]$#i', $type, $matches)) {
@@ -337,11 +316,6 @@ class TransferValidator implements TransferValidatorInterface
         return $transferDefinition;
     }
 
-    /**
-     * @param string $fileName
-     *
-     * @return string
-     */
     protected function getModuleFromPathName(string $fileName): string
     {
         $filter = new UnderscoreToCamelCase();
@@ -350,11 +324,6 @@ class TransferValidator implements TransferValidatorInterface
         return $filter->filter(str_replace(static::TRANSFER_SCHEMA_SUFFIX, '', $fileName));
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     protected function isValidName(string $name): bool
     {
         if (!preg_match('/^[A-Z][a-zA-Z0-9]/', $name)) {
@@ -368,11 +337,6 @@ class TransferValidator implements TransferValidatorInterface
         return true;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     protected function isValidPropertyName(string $name): bool
     {
         if (!preg_match('/^[a-z]/', $name)) {
@@ -382,11 +346,6 @@ class TransferValidator implements TransferValidatorInterface
         return true;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isSingularRequired(string $type): bool
     {
         if (!$this->transferConfig->isSingularRequired()) {
@@ -430,11 +389,6 @@ class TransferValidator implements TransferValidatorInterface
         return count(array_unique($singulars)) < count($singulars);
     }
 
-    /**
-     * @param \Symfony\Component\Finder\SplFileInfo $fileInfo
-     *
-     * @return bool
-     */
     protected function validateXml(SplFileInfo $fileInfo): bool
     {
         $this->xmlValidator->validate(

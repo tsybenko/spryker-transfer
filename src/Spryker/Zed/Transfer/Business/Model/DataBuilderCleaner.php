@@ -25,9 +25,6 @@ class DataBuilderCleaner implements TransferCleanerInterface
         $this->directory = $directory;
     }
 
-    /**
-     * @return void
-     */
     public function cleanDirectory(): void
     {
         if (is_dir($this->directory)) {
@@ -36,9 +33,6 @@ class DataBuilderCleaner implements TransferCleanerInterface
         }
     }
 
-    /**
-     * @return \Symfony\Component\Finder\Finder
-     */
     protected function findFiles(): Finder
     {
         $finder = new Finder();

@@ -59,9 +59,6 @@ class EntityDefinitionNormalizer extends DefinitionNormalizer
      */
     protected $pluralizer;
 
-    /**
-     * @param \Spryker\Zed\Transfer\Business\Model\Generator\Helper\PluralizerInterface $pluralizer
-     */
     public function __construct(PluralizerInterface $pluralizer)
     {
         $this->pluralizer = $pluralizer;
@@ -100,12 +97,6 @@ class EntityDefinitionNormalizer extends DefinitionNormalizer
         return $normalizedDefinitions;
     }
 
-    /**
-     * @param array $attributes
-     * @param string $module
-     *
-     * @return array
-     */
     protected function normalizeAttributes(array $attributes, string $module): array
     {
         if (isset($attributes[0])) {

@@ -37,9 +37,6 @@ class TransferFacadeTest extends Unit
         return $this->getMockBuilder(LoggerInterface::class)->getMock();
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteGeneratedTransferObjectsShouldDeleteAllGeneratedTransferObjects(): void
     {
         $this->generateTransfers();
@@ -69,9 +66,6 @@ class TransferFacadeTest extends Unit
         $this->assertTrue($result);
     }
 
-    /**
-     * @return void
-     */
     public function testCanGenerateDataTransfers(): void
     {
         // Arrange
@@ -85,9 +79,6 @@ class TransferFacadeTest extends Unit
         $this->tester->isDataTransfersExist($transferDestinationDirectory);
     }
 
-    /**
-     * @return void
-     */
     public function testCanGenerateEntityTransfers(): void
     {
         // Arrange
@@ -101,9 +92,6 @@ class TransferFacadeTest extends Unit
         $this->tester->isEntityTransfersExist($transferDestinationDirectory);
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteDataTransfers(): void
     {
         // Arrange
@@ -122,9 +110,6 @@ class TransferFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteEntityTransfers(): void
     {
         // Arrange
@@ -142,26 +127,17 @@ class TransferFacadeTest extends Unit
         ));
     }
 
-    /**
-     * @return void
-     */
     protected function generateTransfers(): void
     {
         $this->generateDataTransfers();
         $this->generateEntityTransfers();
     }
 
-    /**
-     * @return void
-     */
     protected function generateDataTransfers(): void
     {
         $this->tester->getFacade()->generateTransferObjects($this->getMessenger());
     }
 
-    /**
-     * @return void
-     */
     protected function generateEntityTransfers(): void
     {
         $this->tester->getFacade()->generateEntityTransferObjects($this->getMessenger());

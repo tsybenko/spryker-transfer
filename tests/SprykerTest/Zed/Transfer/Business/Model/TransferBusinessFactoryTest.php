@@ -27,9 +27,6 @@ use Spryker\Zed\Transfer\Business\TransferBusinessFactory;
  */
 class TransferBusinessFactoryTest extends Unit
 {
-    /**
-     * @return \Spryker\Zed\Transfer\Business\TransferBusinessFactory
-     */
     private function getFactory(): TransferBusinessFactory
     {
         return new TransferBusinessFactory();
@@ -43,9 +40,6 @@ class TransferBusinessFactoryTest extends Unit
         return $this->getMockBuilder(LoggerInterface::class)->getMock();
     }
 
-    /**
-     * @return void
-     */
     public function testCreateTransferGeneratorShouldReturnFullyConfiguredInstance(): void
     {
         $transferGenerator = $this->getFactory()->createTransferGenerator(
@@ -55,9 +49,6 @@ class TransferBusinessFactoryTest extends Unit
         $this->assertInstanceOf(TransferGenerator::class, $transferGenerator);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateTransferCleanerShouldReturnFullyConfiguredInstance(): void
     {
         $transferCleaner = $this->getFactory()->createTransferCleaner();
@@ -65,9 +56,6 @@ class TransferBusinessFactoryTest extends Unit
         $this->assertInstanceOf(TransferCleaner::class, $transferCleaner);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateTransferValidatorShouldReturnFullyConfiguredInstance(): void
     {
         $transferCleaner = $this->getFactory()->createValidator($this->getMessenger());

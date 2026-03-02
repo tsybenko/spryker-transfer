@@ -11,10 +11,5 @@ use Symfony\Component\Finder\Finder;
 
 interface GeneratedFileFinderInterface
 {
-    /**
-     * @param string $directoryPath
-     *
-     * @return \Symfony\Component\Finder\Finder
-     */
     public function findFiles(string $directoryPath): Finder;
 }
