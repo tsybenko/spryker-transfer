@@ -21,6 +21,11 @@ class DataBuilderClassGenerator implements GeneratorInterface
     /**
      * @var string
      */
+    public const TWIG_TEMPLATES_LOCATION_FALLBACK = '/Templates/';
+
+    /**
+     * @var string
+     */
     protected string $targetDirectory;
 
     /**
@@ -37,10 +42,13 @@ class DataBuilderClassGenerator implements GeneratorInterface
     {
         $this->targetDirectory = $targetDirectory;
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . static::TWIG_TEMPLATES_LOCATION);
+        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . static::TWIG_TEMPLATES_LOCATION)
+            ?: realpath(__DIR__ . DIRECTORY_SEPARATOR . static::TWIG_TEMPLATES_LOCATION_FALLBACK);
+
         if (!$path) {
             throw new RuntimeException(sprintf('Cannot find templates path `%s`', __DIR__ . DIRECTORY_SEPARATOR . static::TWIG_TEMPLATES_LOCATION));
         }
+
         $loader = new FilesystemLoader($path);
         $this->twig = new Environment($loader, []);
     }

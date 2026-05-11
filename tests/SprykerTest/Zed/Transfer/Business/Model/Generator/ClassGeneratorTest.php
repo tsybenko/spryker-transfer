@@ -8,6 +8,8 @@
 namespace SprykerTest\Zed\Transfer\Business\Model\Generator;
 
 use Codeception\Test\Unit;
+use RuntimeException;
+use Spryker\Zed\Transfer\Business\Model\Generator\ClassGenerator;
 use Spryker\Zed\Transfer\Business\Model\Generator\DataBuilderClassGenerator;
 use Spryker\Zed\Transfer\Business\Model\Generator\DataBuilderDefinition;
 use Symfony\Component\Filesystem\Filesystem;
@@ -36,6 +38,77 @@ class ClassGeneratorTest extends Unit
         $this->removeTargetDirectory();
     }
 
+    public function testGenerateShouldCreateTargetDirectoryIfNotExist(): void
+    {
+        $transferGenerator = new DataBuilderClassGenerator($this->getFixtureDirectory());
+        $transferDefinition = new DataBuilderDefinition();
+        $transferDefinition->setDefinition([
+            'name' => 'Name',
+        ]);
+        $transferGenerator->generate($transferDefinition);
+
+        $this->assertTrue(is_dir($this->getFixtureDirectory()));
+    }
+
+    public function testClassGeneratorInitializesWithNewTemplatesPath(): void
+    {
+        $generator = new ClassGenerator($this->getFixtureDirectory());
+
+        $this->assertInstanceOf(ClassGenerator::class, $generator);
+    }
+
+    public function testClassGeneratorFallsBackToLegacyTemplatesPath(): void
+    {
+        $generator = new class ($this->getFixtureDirectory()) extends ClassGenerator {
+            public const TWIG_TEMPLATES_LOCATION = '/non-existent-primary/';
+
+            // Fallback points to the same real templates location
+            public const TWIG_TEMPLATES_LOCATION_FALLBACK = '/../../../../../../../templates/generator/';
+        };
+
+        $this->assertInstanceOf(ClassGenerator::class, $generator);
+    }
+
+    public function testClassGeneratorThrowsExceptionWhenBothTemplatePathsNotFound(): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        new class ($this->getFixtureDirectory()) extends ClassGenerator {
+            public const TWIG_TEMPLATES_LOCATION = '/non-existent-primary/';
+
+            public const TWIG_TEMPLATES_LOCATION_FALLBACK = '/non-existent-fallback/';
+        };
+    }
+
+    public function testDataBuilderClassGeneratorInitializesWithNewTemplatesPath(): void
+    {
+        $generator = new DataBuilderClassGenerator($this->getFixtureDirectory());
+
+        $this->assertInstanceOf(DataBuilderClassGenerator::class, $generator);
+    }
+
+    public function testDataBuilderClassGeneratorFallsBackToLegacyTemplatesPath(): void
+    {
+        $generator = new class ($this->getFixtureDirectory()) extends DataBuilderClassGenerator {
+            public const TWIG_TEMPLATES_LOCATION = '/non-existent-primary/';
+
+            public const TWIG_TEMPLATES_LOCATION_FALLBACK = '/../../../../../../../templates/generator/';
+        };
+
+        $this->assertInstanceOf(DataBuilderClassGenerator::class, $generator);
+    }
+
+    public function testDataBuilderClassGeneratorThrowsExceptionWhenBothTemplatePathsNotFound(): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        new class ($this->getFixtureDirectory()) extends DataBuilderClassGenerator {
+            public const TWIG_TEMPLATES_LOCATION = '/non-existent-primary/';
+
+            public const TWIG_TEMPLATES_LOCATION_FALLBACK = '/non-existent-fallback/';
+        };
+    }
+
     private function removeTargetDirectory(): void
     {
         if (is_dir($this->getFixtureDirectory())) {
@@ -47,17 +120,5 @@ class ClassGeneratorTest extends Unit
     private function getFixtureDirectory(): string
     {
         return __DIR__ . '/FixturesTest/';
-    }
-
-    public function testGenerateShouldCreateTargetDirectoryIfNotExist(): void
-    {
-        $transferGenerator = new DataBuilderClassGenerator($this->getFixtureDirectory());
-        $transferDefinition = new DataBuilderDefinition();
-        $transferDefinition->setDefinition([
-            'name' => 'Name',
-        ]);
-        $transferGenerator->generate($transferDefinition);
-
-        $this->assertTrue(is_dir($this->getFixtureDirectory()));
     }
 }
