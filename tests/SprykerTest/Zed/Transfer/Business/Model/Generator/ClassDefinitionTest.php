@@ -393,6 +393,7 @@ class ClassDefinitionTest extends Unit
             'deprecationDescription' => null,
             'isTypeAssertionEnabled' => $isTypeAssertionEnabled,
             'isAbstractAttributesTransfer' => $isAbstractAttributesTransfer,
+            'parameterAttributes' => [],
         ];
 
         if ($isAbstractAttributesTransfer) {
@@ -439,6 +440,7 @@ class ClassDefinitionTest extends Unit
         unset($method['typeHint']);
         unset($method['shimNotice']);
         unset($method['isTypeAssertionEnabled']);
+        unset($method['parameterAttributes']);
 
         return $method;
     }
@@ -458,6 +460,7 @@ class ClassDefinitionTest extends Unit
         $method['is_associative'] = false;
         unset($method['shimNotice']);
         unset($method['isAbstractAttributesTransfer']);
+        unset($method['parameterAttributes']);
 
         return $method;
     }
@@ -759,6 +762,51 @@ class ClassDefinitionTest extends Unit
 
         // Assert
         $this->assertEquals($expectedName, $result, $testDescription);
+    }
+
+    /**
+     * @return void
+     */
+    public function testSensitivePropertySettersContainSensitiveParameterAttribute(): void
+    {
+        $this->tester->mockEnvironmentConfig(TransferConstants::IS_DEBUG_ENABLED, false);
+
+        $property = $this->getProperty('password', 'string');
+        $property['sensitive'] = true;
+
+        $transferDefinition = [
+            'name' => 'name',
+            'property' => [$property],
+        ];
+
+        $classDefinition = $this->createClassDefinition();
+        $classDefinition->setDefinition($transferDefinition);
+
+        $methods = $classDefinition->getMethods();
+
+        $this->assertContains('\\SensitiveParameter', $methods['setPassword']['parameterAttributes']);
+        $this->assertContains('\\SensitiveParameter', $methods['setPasswordOrFail']['parameterAttributes']);
+    }
+
+    /**
+     * @return void
+     */
+    public function testNonSensitivePropertySettersDoNotContainSensitiveParameterAttribute(): void
+    {
+        $this->tester->mockEnvironmentConfig(TransferConstants::IS_DEBUG_ENABLED, false);
+
+        $transferDefinition = [
+            'name' => 'name',
+            'property' => [$this->getProperty('password', 'string')],
+        ];
+
+        $classDefinition = $this->createClassDefinition();
+        $classDefinition->setDefinition($transferDefinition);
+
+        $methods = $classDefinition->getMethods();
+
+        $this->assertEmpty($methods['setPassword']['parameterAttributes']);
+        $this->assertEmpty($methods['setPasswordOrFail']['parameterAttributes']);
     }
 
     /**
