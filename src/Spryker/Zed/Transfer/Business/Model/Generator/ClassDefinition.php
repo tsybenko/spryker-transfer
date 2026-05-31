@@ -300,6 +300,7 @@ class ClassDefinition implements ClassDefinitionInterface
 
             $property['is_associative'] = $this->isAssociativeArray($property);
             $property['is_strict'] = $this->isStrictProperty($property);
+            $property['is_sensitive'] = $this->isSensitive($property);
 
             $normalizedProperties[] = $property;
         }
@@ -453,6 +454,26 @@ class ClassDefinition implements ClassDefinitionInterface
     protected function isTypeAbstractAttributesTransfer(array $property): bool
     {
         return ($property['is_transfer'] && $property[static::TYPE_FULLY_QUALIFIED] === AbstractAttributesTransfer::class);
+    }
+
+    /**
+     * @param array<string, mixed> $property
+     *
+     * @return bool
+     */
+    protected function isSensitive(array $property): bool
+    {
+        return isset($property['sensitive']) && filter_var($property['sensitive'], FILTER_VALIDATE_BOOLEAN);
+    }
+
+    /**
+     * @param array<string, mixed> $method
+     *
+     * @return void
+     */
+    protected function addSensitiveParameterAttribute(array &$method): void
+    {
+        $method['parameterAttributes'][] = '\\SensitiveParameter';
     }
 
     /**
@@ -648,6 +669,10 @@ class ClassDefinition implements ClassDefinitionInterface
                 $property['type'],
                 $this->getPropertyTypeShim($property),
             );
+        }
+
+        if ($property['is_sensitive']) {
+            $this->addSensitiveParameterAttribute($method);
         }
 
         $this->methods[$methodName] = $method;
@@ -977,6 +1002,10 @@ class ClassDefinition implements ClassDefinitionInterface
             $method['valueObject'] = $this->getShortClassName(
                 $this->getValueObjectFullyQualifiedClassName($property),
             );
+        }
+
+        if ($property['is_sensitive']) {
+            $this->addSensitiveParameterAttribute($method);
         }
 
         $this->methods[$methodName] = $method;
