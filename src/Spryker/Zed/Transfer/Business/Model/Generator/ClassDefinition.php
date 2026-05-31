@@ -300,7 +300,7 @@ class ClassDefinition implements ClassDefinitionInterface
 
             $property['is_associative'] = $this->isAssociativeArray($property);
             $property['is_strict'] = $this->isStrictProperty($property);
-            $property['is_sensitive'] = $this->isSensitive($property);
+            $property['is_sensitive'] = $this->isSensitiveProperty($property);
 
             $normalizedProperties[] = $property;
         }
@@ -461,7 +461,7 @@ class ClassDefinition implements ClassDefinitionInterface
      *
      * @return bool
      */
-    protected function isSensitive(array $property): bool
+    protected function isSensitiveProperty(array $property): bool
     {
         return isset($property['sensitive']) && filter_var($property['sensitive'], FILTER_VALIDATE_BOOLEAN);
     }
