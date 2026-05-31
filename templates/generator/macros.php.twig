@@ -4,12 +4,8 @@
     /**
      * @deprecated {{ constant.deprecationDescription }}
      */
-    {% else -%}
-    /**
-     * @var string
-     */
     {% endif -%}
-    public const {{ constant.name }} = '{{ constant.value }}';
+    public const string {{ constant.name }} = '{{ constant.value }}';
 
 {% endmacro %}
 
