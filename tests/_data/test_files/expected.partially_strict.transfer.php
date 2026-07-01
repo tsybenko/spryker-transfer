@@ -16,75 +16,33 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class PartiallyStrictTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    public const PROP_SCALAR = 'propScalar';
+    public const string PROP_SCALAR = 'propScalar';
 
-    /**
-     * @var string
-     */
-    public const PROP_SCALAR_STRICT = 'propScalarStrict';
+    public const string PROP_SCALAR_STRICT = 'propScalarStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_DECIMAL = 'propDecimal';
+    public const string PROP_DECIMAL = 'propDecimal';
 
-    /**
-     * @var string
-     */
-    public const PROP_DECIMAL_STRICT = 'propDecimalStrict';
+    public const string PROP_DECIMAL_STRICT = 'propDecimalStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_SIMPLE_ARRAY = 'propSimpleArray';
+    public const string PROP_SIMPLE_ARRAY = 'propSimpleArray';
 
-    /**
-     * @var string
-     */
-    public const PROP_SIMPLE_ARRAY_STRICT = 'propSimpleArrayStrict';
+    public const string PROP_SIMPLE_ARRAY_STRICT = 'propSimpleArrayStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM = 'propDummyItem';
+    public const string PROP_DUMMY_ITEM = 'propDummyItem';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM_STRICT = 'propDummyItemStrict';
+    public const string PROP_DUMMY_ITEM_STRICT = 'propDummyItemStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM_COLLECTION = 'propDummyItemCollection';
+    public const string PROP_DUMMY_ITEM_COLLECTION = 'propDummyItemCollection';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM_COLLECTION_STRICT = 'propDummyItemCollectionStrict';
+    public const string PROP_DUMMY_ITEM_COLLECTION_STRICT = 'propDummyItemCollectionStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY = 'propTypedArray';
+    public const string PROP_TYPED_ARRAY = 'propTypedArray';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY_STRICT = 'propTypedArrayStrict';
+    public const string PROP_TYPED_ARRAY_STRICT = 'propTypedArrayStrict';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY_ASSOC = 'propTypedArrayAssoc';
+    public const string PROP_TYPED_ARRAY_ASSOC = 'propTypedArrayAssoc';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY_ASSOC_STRICT = 'propTypedArrayAssocStrict';
+    public const string PROP_TYPED_ARRAY_ASSOC_STRICT = 'propTypedArrayAssocStrict';
 
     /**
      * @var int|null

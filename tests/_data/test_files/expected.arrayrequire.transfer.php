@@ -17,70 +17,31 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class GeneratedTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    public const TEST_STRING = 'testString';
+    public const string TEST_STRING = 'testString';
 
-    /**
-     * @var string
-     */
-    public const TEST_STRING_ARRAY = 'testStringArray';
+    public const string TEST_STRING_ARRAY = 'testStringArray';
 
-    /**
-     * @var string
-     */
-    public const TEST_INT = 'testInt';
+    public const string TEST_INT = 'testInt';
 
-    /**
-     * @var string
-     */
-    public const TEST_INT_ARRAY = 'testIntArray';
+    public const string TEST_INT_ARRAY = 'testIntArray';
 
-    /**
-     * @var string
-     */
-    public const TEST_BOOL = 'testBool';
+    public const string TEST_BOOL = 'testBool';
 
-    /**
-     * @var string
-     */
-    public const TEST_BOOL_ARRAY = 'testBoolArray';
+    public const string TEST_BOOL_ARRAY = 'testBoolArray';
 
-    /**
-     * @var string
-     */
-    public const TEST_ARRAY = 'testArray';
+    public const string TEST_ARRAY = 'testArray';
 
-    /**
-     * @var string
-     */
-    public const TEST_TRANSFER = 'testTransfer';
+    public const string TEST_TRANSFER = 'testTransfer';
 
-    /**
-     * @var string
-     */
-    public const TEST_TRANSFERS = 'testTransfers';
+    public const string TEST_TRANSFERS = 'testTransfers';
 
-    /**
-     * @var string
-     */
-    public const TEST_TRANSFER_STRICT = 'testTransferStrict';
+    public const string TEST_TRANSFER_STRICT = 'testTransferStrict';
 
-    /**
-     * @var string
-     */
-    public const TEST_DECIMAL = 'testDecimal';
+    public const string TEST_DECIMAL = 'testDecimal';
 
-    /**
-     * @var string
-     */
-    public const ASSOCIATIVE_NESTED_TRANSFERS = 'associativeNestedTransfers';
+    public const string ASSOCIATIVE_NESTED_TRANSFERS = 'associativeNestedTransfers';
 
-    /**
-     * @var string
-     */
-    public const ABSTRACT_ATTRIBUTES = 'abstractAttributes';
+    public const string ABSTRACT_ATTRIBUTES = 'abstractAttributes';
 
     /**
      * @var string|null

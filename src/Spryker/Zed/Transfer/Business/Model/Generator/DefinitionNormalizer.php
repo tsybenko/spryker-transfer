@@ -44,6 +44,8 @@ class DefinitionNormalizer implements DefinitionNormalizerInterface
      */
     public const KEY_STRICT_MODE = 'strict';
 
+    public const string KEY_SENSITIVE = 'sensitive';
+
     /**
      * @var string
      */

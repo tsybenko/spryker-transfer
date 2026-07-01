@@ -4,12 +4,8 @@
     /**
      * @deprecated {{ constant.deprecationDescription }}
      */
-    {% else -%}
-    /**
-     * @var string
-     */
     {% endif -%}
-    public const {{ constant.name }} = '{{ constant.value }}';
+    public const string {{ constant.name }} = '{{ constant.value }}';
 
 {% endmacro %}
 
@@ -89,7 +85,7 @@
      *
      * @return $this
      */
-    public function {{ method.name }}({% if method.typeHint %}{{ method.typeHint }} {% endif %}${{ method.property }}{% if method.hasDefaultNull %} = null{% endif %})
+    public function {{ method.name }}({% if method.parameterAttributes|length %}#[{{ method.parameterAttributes|join(', ') }}] {% endif %}{% if method.typeHint %}{{ method.typeHint }} {% endif %}${{ method.property }}{% if method.hasDefaultNull %} = null{% endif %})
     {
         {% if method.isTypeAssertionEnabled -%}
         $this->validateAddSetValueType(${{ method.property }}, '{{ method.var }}', __METHOD__);
@@ -154,7 +150,7 @@
      *
      * @return $this
      */
-    public function {{ method.name }}({% if method.typeHint %}{{ method.typeHint }} {% endif %}${{ method.property }})
+    public function {{ method.name }}({% if method.parameterAttributes|length %}#[{{ method.parameterAttributes|join(', ') }}] {% endif %}{% if method.typeHint %}{{ method.typeHint }} {% endif %}${{ method.property }})
     {
         {% if method.typeHint is null -%}
         if (${{ method.property }} === null) {

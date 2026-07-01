@@ -300,6 +300,7 @@ class ClassDefinition implements ClassDefinitionInterface
 
             $property['is_associative'] = $this->isAssociativeArray($property);
             $property['is_strict'] = $this->isStrictProperty($property);
+            $property['is_sensitive'] = $this->isSensitiveProperty($property);
 
             $normalizedProperties[] = $property;
         }
@@ -635,12 +636,14 @@ class ClassDefinition implements ClassDefinitionInterface
             'defaultSetMethodName' => $defaultSetMethodName,
             'property' => $propertyName,
             'propertyConst' => $this->getPropertyConstantName($property),
+            'parameterAttributes' => [],
             'var' => $this->buildSetArgumentType($property),
             'bundles' => $property['bundles'],
             'typeHint' => null,
             'deprecationDescription' => $this->getPropertyDeprecationDescription($property),
         ];
         $method = $this->addSetOrFailTypeHint($method, $property);
+        $method = $this->addSensitiveParameterAttribute($method, $property);
 
         if ($this->propertyHasTypeShim($property)) {
             $method['typeShimNotice'] = $this->buildTypeShimNotice(
@@ -665,6 +668,7 @@ class ClassDefinition implements ClassDefinitionInterface
             'name' => $methodName,
             'property' => $propertyName,
             'propertyConst' => $this->getPropertyConstantName($property),
+            'parameterAttributes' => [],
             'return' => preg_replace('/\|null$/', '', $this->getReturnType($property)),
             'bundles' => $property['bundles'],
             'deprecationDescription' => $this->getPropertyDeprecationDescription($property),
@@ -672,6 +676,8 @@ class ClassDefinition implements ClassDefinitionInterface
         ];
 
         $method = $this->addGetOrFailTypeHint($method, $property);
+        $method = $this->addSensitiveParameterAttribute($method, $property);
+
         $this->methods[$methodName] = $method;
     }
 
@@ -939,6 +945,7 @@ class ClassDefinition implements ClassDefinitionInterface
             'name' => $methodName,
             'property' => $propertyName,
             'propertyConst' => $this->getPropertyConstantName($property),
+            'parameterAttributes' => [],
             'var' => $this->buildSetArgumentType($property),
             'valueObject' => false,
             'bundles' => $property['bundles'],
@@ -949,6 +956,7 @@ class ClassDefinition implements ClassDefinitionInterface
         $method = $this->addSetTypeHint($method, $property);
         $method = $this->addDefaultNull($method, $property);
         $method = $this->setTypeAssertionMode($method);
+        $method = $this->addSensitiveParameterAttribute($method, $property);
 
         if ($this->isArrayCollection($property)) {
             $method['setsArrayCollection'] = true;
@@ -1088,6 +1096,14 @@ class ClassDefinition implements ClassDefinitionInterface
     protected function isStrictProperty(array $property): bool
     {
         return $property[DefinitionNormalizer::KEY_STRICT_MODE] ?? false;
+    }
+
+    /**
+     * @param array<string, mixed> $property
+     */
+    protected function isSensitiveProperty(array $property): bool
+    {
+        return isset($property[DefinitionNormalizer::KEY_SENSITIVE]) && filter_var($property[DefinitionNormalizer::KEY_SENSITIVE], FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
@@ -1434,6 +1450,21 @@ class ClassDefinition implements ClassDefinitionInterface
     {
         if ($this->isStrictProperty($property)) {
             $method['returnTypeHint'] = ltrim($this->buildGetReturnTypeHint($property), '?');
+        }
+
+        return $method;
+    }
+
+    /**
+     * @param array<string, mixed> $method
+     * @param array<string, mixed> $property
+     *
+     * @return array<string, mixed>
+     */
+    protected function addSensitiveParameterAttribute(array $method, array $property): array
+    {
+        if ($this->isSensitiveProperty($property)) {
+            $method['parameterAttributes'][] = '\\SensitiveParameter';
         }
 
         return $method;

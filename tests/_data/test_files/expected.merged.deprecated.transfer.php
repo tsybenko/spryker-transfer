@@ -20,27 +20,27 @@ class MergedDeprecatedFooBarTransfer extends AbstractTransfer
     /**
      * @deprecated scalarField is deprecated.
      */
-    public const SCALAR_FIELD = 'scalarField';
+    public const string SCALAR_FIELD = 'scalarField';
 
     /**
      * @deprecated arrayField is deprecated.
      */
-    public const ARRAY_FIELD = 'arrayField';
+    public const string ARRAY_FIELD = 'arrayField';
 
     /**
      * @deprecated transferField is deprecated.
      */
-    public const TRANSFER_FIELD = 'transferField';
+    public const string TRANSFER_FIELD = 'transferField';
 
     /**
      * @deprecated transferCollectionField is deprecated.
      */
-    public const TRANSFER_COLLECTION_FIELD = 'transferCollectionField';
+    public const string TRANSFER_COLLECTION_FIELD = 'transferCollectionField';
 
     /**
      * @deprecated Deprecated on project level.
      */
-    public const PROJECT_LEVEL_DEPRECATED_FIELD = 'projectLevelDeprecatedField';
+    public const string PROJECT_LEVEL_DEPRECATED_FIELD = 'projectLevelDeprecatedField';
 
     /**
      * @var string|null

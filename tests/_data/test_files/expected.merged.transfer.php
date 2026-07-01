@@ -16,25 +16,13 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class FooBarTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    public const NAME = 'name';
+    public const string NAME = 'name';
 
-    /**
-     * @var string
-     */
-    public const BLA = 'bla';
+    public const string BLA = 'bla';
 
-    /**
-     * @var string
-     */
-    public const STOCK = 'stock';
+    public const string STOCK = 'stock';
 
-    /**
-     * @var string
-     */
-    public const SELF_REFERENCE = 'selfReference';
+    public const string SELF_REFERENCE = 'selfReference';
 
     /**
      * @var string|null

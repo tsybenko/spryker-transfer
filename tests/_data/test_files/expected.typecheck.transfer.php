@@ -18,45 +18,21 @@ class CatFaceTransfer extends AbstractTransfer
 {
     use TransferTypeValidatorTrait;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'name';
+    public const string NAME = 'name';
 
-    /**
-     * @var string
-     */
-    public const ITEM = 'item';
+    public const string ITEM = 'item';
 
-    /**
-     * @var string
-     */
-    public const ITEMS = 'items';
+    public const string ITEMS = 'items';
 
-    /**
-     * @var string
-     */
-    public const TYPED_ARRAY = 'typedArray';
+    public const string TYPED_ARRAY = 'typedArray';
 
-    /**
-     * @var string
-     */
-    public const TYPED_ASSOCIATIVE_STRING_ARRAY = 'typedAssociativeStringArray';
+    public const string TYPED_ASSOCIATIVE_STRING_ARRAY = 'typedAssociativeStringArray';
 
-    /**
-     * @var string
-     */
-    public const TYPED_ASSOCIATIVE_COLLECTION = 'typedAssociativeCollection';
+    public const string TYPED_ASSOCIATIVE_COLLECTION = 'typedAssociativeCollection';
 
-    /**
-     * @var string
-     */
-    public const TYPED_NOT_ASSOCIATIVE_STRING_ARRAY = 'typedNotAssociativeStringArray';
+    public const string TYPED_NOT_ASSOCIATIVE_STRING_ARRAY = 'typedNotAssociativeStringArray';
 
-    /**
-     * @var string
-     */
-    public const TYPED_NOT_ASSOCIATIVE_ARRAY = 'typedNotAssociativeArray';
+    public const string TYPED_NOT_ASSOCIATIVE_ARRAY = 'typedNotAssociativeArray';
 
     /**
      * @var string|null

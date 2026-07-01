@@ -16,50 +16,23 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class FullyStrictTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    public const PROP_SCALAR = 'propScalar';
+    public const string PROP_SCALAR = 'propScalar';
 
-    /**
-     * @var string
-     */
-    public const PROP_DECIMAL = 'propDecimal';
+    public const string PROP_DECIMAL = 'propDecimal';
 
-    /**
-     * @var string
-     */
-    public const PROP_SIMPLE_ARRAY = 'propSimpleArray';
+    public const string PROP_SIMPLE_ARRAY = 'propSimpleArray';
 
-    /**
-     * @var string
-     */
-    public const PROP_ARRAY_SINGULAR = 'propArraySingular';
+    public const string PROP_ARRAY_SINGULAR = 'propArraySingular';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM = 'propDummyItem';
+    public const string PROP_DUMMY_ITEM = 'propDummyItem';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM_COLLECTION = 'propDummyItemCollection';
+    public const string PROP_DUMMY_ITEM_COLLECTION = 'propDummyItemCollection';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY = 'propTypedArray';
+    public const string PROP_TYPED_ARRAY = 'propTypedArray';
 
-    /**
-     * @var string
-     */
-    public const PROP_TYPED_ARRAY_ASSOC = 'propTypedArrayAssoc';
+    public const string PROP_TYPED_ARRAY_ASSOC = 'propTypedArrayAssoc';
 
-    /**
-     * @var string
-     */
-    public const PROP_DUMMY_ITEM_COLLECTION_ASSOC = 'propDummyItemCollectionAssoc';
+    public const string PROP_DUMMY_ITEM_COLLECTION_ASSOC = 'propDummyItemCollectionAssoc';
 
     /**
      * @var int|null
